@@ -51,7 +51,7 @@ class UserData {
     var userLastClued: NSDate {
     get {
         var userLastClued = NSDate(timeIntervalSince1970: 0)
-        var lastDateData: AnyObject! = NSUserDefaults.standardUserDefaults().objectForKey("userLastClued")
+        let lastDateData: AnyObject! = NSUserDefaults.standardUserDefaults().objectForKey("userLastClued")
         if let lastDate = lastDateData as? NSDate {
             userLastClued = lastDate
         }
@@ -77,7 +77,7 @@ class UserData {
     
     func hasBeenIntroduced(character:Character) -> Bool {
         let defaults = NSUserDefaults.standardUserDefaults()
-        var hasBeenIntroduced = defaults.boolForKey("\(character)HasBeenIntroduced")
+        let hasBeenIntroduced = defaults.boolForKey("\(character)HasBeenIntroduced")
         if !hasBeenIntroduced {
             defaults.setBool(true, forKey: "\(character)HasBeenIntroduced")
         }

@@ -51,7 +51,7 @@ class PointSequenceView: UIView, PointSequenceReceptor {
     }
     
     func addPointToSequence(point: CGPoint) {
-        var shape = CAShapeLayer()
+        let shape = CAShapeLayer()
         shape.path =  UIBezierPath(arcCenter: CGPointZero, radius: pointSize/2, startAngle: 0, endAngle: 7, clockwise: true).CGPath
         shape.fillColor = pointColor.CGColor
         shape.position = point

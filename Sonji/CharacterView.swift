@@ -68,7 +68,7 @@ class CharacterView: UIView {
     }
     
     func _animateStrokeAfter(strokeView soughtStrokeView:StrokeView, withCallback callback: (() -> ())? = nil) {
-        for (index, strokeView) in enumerate(_strokeViews) {
+        for (index, strokeView) in _strokeViews.enumerate() {
             if soughtStrokeView == strokeView {
                 if index + 1 < _strokeViews.count {
                     _strokeViews[index+1].animateStroke() {
@@ -95,7 +95,7 @@ class CharacterView: UIView {
         // Initialization code
     }
     
-    required init(coder aDecoder: NSCoder)
+    required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
     }

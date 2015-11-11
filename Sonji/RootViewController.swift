@@ -35,7 +35,7 @@ class RootViewController: UIViewController, UIGestureRecognizerDelegate {
         self.addChildViewController(self.cardSetViewController)
         self.view.addSubview(self.cardSetViewController.view)
 
-        var cardSetViewRect = self.view.bounds
+        let cardSetViewRect = self.view.bounds
         self.cardSetViewController.view.frame = cardSetViewRect
 
         self.cardSetViewController.didMoveToParentViewController(self)

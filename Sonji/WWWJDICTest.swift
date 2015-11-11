@@ -23,7 +23,7 @@ class WWWJDICTest: XCTestCase {
     func testSynchroneousCreation() {
 
         let optionalEntry : WWWJDICEntry? = WWWJDICEntry.downloadEntryForCharacter("選")
-        if !optionalEntry {
+        if (optionalEntry == nil) {
             XCTFail("downloadEntryForCharacter returned nil")
         }
         if let entry = optionalEntry {
@@ -38,7 +38,7 @@ class WWWJDICTest: XCTestCase {
         var expectEntry = self.expectationWithDescription("async kanji download")
         
         WWWJDICEntry.asyncDownloadEntryForCharacter("選", withCallback:{(optionalEntry: WWWJDICEntry?) in
-            if !optionalEntry {
+            if (optionalEntry == nil) {
                 XCTFail("asyncDownloadEntryForCharacter returned nil")
             }
             if let entry = optionalEntry {
@@ -53,7 +53,7 @@ class WWWJDICTest: XCTestCase {
     
     func testMultiWordTranslation() {
         let optionalEntry : WWWJDICEntry? = WWWJDICEntry.downloadEntryForCharacter("田")
-        if !optionalEntry {
+        if (optionalEntry == nil) {
             XCTFail("downloadEntryForCharacter returned nil")
         }
         if let entry = optionalEntry {

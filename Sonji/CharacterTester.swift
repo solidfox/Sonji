@@ -41,14 +41,14 @@ class CharacterTester: CharacterMetadataRepositoryDelegate, CharacterDrawQuizDel
             return (character, averageScore, averageTimePoint)
         }
         
-        recentResults.sort {return $0.1 < $1.1}
+        recentResults.sortInPlace {return $0.1 < $1.1}
         if recentResults[0].1 >= 0.83 {  // WARNING Dirty magic number
-            recentResults.sort {return $0.2.timeIntervalSinceNow < $1.2.timeIntervalSinceNow}
+            recentResults.sortInPlace {return $0.2.timeIntervalSinceNow < $1.2.timeIntervalSinceNow}
         }
         
         let distribution = [0.40, 0.35, 0.15, 0.06, 0.03, 0.02, 0.02, 0.02]
             
-        var characterToLoad = recentResults[randomIndexFromDistribution(distribution)].0
+        let characterToLoad = recentResults[randomIndexFromDistribution(distribution)].0
             
 //        NSLog("\(recentResults)")
         return characterToLoad
@@ -118,7 +118,7 @@ class CharacterTester: CharacterMetadataRepositoryDelegate, CharacterDrawQuizDel
     
     func _loadedNewCharacter(character: Character) {
         if let metadata = _metadataForCharacter[character] {
-            for (index, (characterForHandler, handler)) in enumerate(_completionHandlers) {
+            for (index, (characterForHandler, handler)) in _completionHandlers.enumerate() {
                 if character == characterForHandler {
                     // REMOVE the handler
                     _completionHandlers.removeAtIndex(index)

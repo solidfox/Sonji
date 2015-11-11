@@ -49,9 +49,9 @@ class UserStroke {
     
     var passed: Bool {
         let reqAccuracy = 0.2*refStroke.bounds.width
-        let startingPointOffset = distance(CGPointApplyAffineTransform(path.firstPoint, transformToRefDim), refStroke.path.firstPoint)
+        let startingPointOffset = distance(CGPointApplyAffineTransform(path.firstPoint, transformToRefDim), p2: refStroke.path.firstPoint)
         let startingPointOK = startingPointOffset <= reqAccuracy
-        let endPointOffset = distance(CGPointApplyAffineTransform(path.currentPoint, transformToRefDim), refStroke.path.currentPoint)
+        let endPointOffset = distance(CGPointApplyAffineTransform(path.currentPoint, transformToRefDim), p2: refStroke.path.currentPoint)
         let endPointOK = endPointOffset <= reqAccuracy
         return compareScore > Double(requiredScore) && startingPointOK && endPointOK
     }

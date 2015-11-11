@@ -38,8 +38,6 @@
 		966C23361972A23500AEE3FC /* BezierElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966C23311972A23500AEE3FC /* BezierElement.swift */; };
 		966C23371972A23500AEE3FC /* BezierPath+SVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966C23321972A23500AEE3FC /* BezierPath+SVG.swift */; };
 		966C23381972A23500AEE3FC /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966C23331972A23500AEE3FC /* CGPointExtensions.swift */; };
-		96792FD01977B82900687C16 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96792FCC1977B82900687C16 /* HockeySDK.framework */; };
-		96792FD21977B82900687C16 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 96792FCF1977B82900687C16 /* HockeySDKResources.bundle */; };
 		96792FD41977BAE600687C16 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96792FD31977BAE600687C16 /* CoreGraphics.framework */; };
 		96792FD61977BAEF00687C16 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96792FD51977BAEF00687C16 /* CoreText.framework */; };
 		96792FD71977BAFC00687C16 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9619E63A196554CD00DE98F5 /* Foundation.framework */; };
@@ -134,9 +132,6 @@
 		966C23311972A23500AEE3FC /* BezierElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BezierElement.swift; path = ../../BezierKit/BezierKit/BezierElement.swift; sourceTree = "<group>"; };
 		966C23321972A23500AEE3FC /* BezierPath+SVG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "BezierPath+SVG.swift"; path = "../../BezierKit/BezierKit/BezierPath+SVG.swift"; sourceTree = "<group>"; };
 		966C23331972A23500AEE3FC /* CGPointExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPointExtensions.swift; path = ../../BezierKit/BezierKit/CGPointExtensions.swift; sourceTree = "<group>"; };
-		96792FCC1977B82900687C16 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
-		96792FCE1977B82900687C16 /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
-		96792FCF1977B82900687C16 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		96792FD31977BAE600687C16 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		96792FD51977BAEF00687C16 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		96792FD81977BB0C00687C16 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -194,7 +189,6 @@
 				96792FD71977BAFC00687C16 /* Foundation.framework in Frameworks */,
 				96792FD61977BAEF00687C16 /* CoreText.framework in Frameworks */,
 				96792FD41977BAE600687C16 /* CoreGraphics.framework in Frameworks */,
-				96792FD01977B82900687C16 /* HockeySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,24 +287,6 @@
 			path = KanjiVGKit;
 			sourceTree = "<group>";
 		};
-		96792FCB1977B82900687C16 /* HockeySDK.embeddedframework */ = {
-			isa = PBXGroup;
-			children = (
-				96792FCC1977B82900687C16 /* HockeySDK.framework */,
-				96792FCD1977B82900687C16 /* Resources */,
-			);
-			path = HockeySDK.embeddedframework;
-			sourceTree = "<group>";
-		};
-		96792FCD1977B82900687C16 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				96792FCE1977B82900687C16 /* HockeySDK.xcconfig */,
-				96792FCF1977B82900687C16 /* HockeySDKResources.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		96792FE01977BB5200687C16 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,7 +296,6 @@
 				96792FD81977BB0C00687C16 /* QuartzCore.framework */,
 				96792FD51977BAEF00687C16 /* CoreText.framework */,
 				96792FD31977BAE600687C16 /* CoreGraphics.framework */,
-				96792FCB1977B82900687C16 /* HockeySDK.embeddedframework */,
 				9619E63A196554CD00DE98F5 /* Foundation.framework */,
 				9619E6381965534C00DE98F5 /* CFNetwork.framework */,
 			);
@@ -477,7 +452,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				96ED56311960B26B00E5A16A /* Main.storyboard in Resources */,
-				96792FD21977B82900687C16 /* HockeySDKResources.bundle in Resources */,
 				963D4545196B7DA200AB6A22 /* Instruments in Resources */,
 				9657BFE119723DA20028FABE /* notice.m4a in Resources */,
 				968E3B2D196FEC2100403261 /* Sound Effects in Resources */,

@@ -12,7 +12,7 @@ import AVFoundation
 
 class CharacterDrawQuizViewController: UIViewController, UIGestureRecognizerDelegate, UIAlertViewDelegate {
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         // TODO Should this be implemented?
         super.init(coder: aDecoder)
     }
@@ -167,7 +167,7 @@ class CharacterDrawQuizViewController: UIViewController, UIGestureRecognizerDele
             },
             completion: {completed in
                 UIView.animateWithDuration(1.0,
-                    delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn | UIViewAnimationOptions.BeginFromCurrentState,
+                    delay: 0.0, options: [UIViewAnimationOptions.CurveEaseIn, UIViewAnimationOptions.BeginFromCurrentState],
                     animations: {
                         self.canvasHelp.alpha = 0
                     }, completion: {_ in
@@ -253,7 +253,7 @@ class CharacterDrawQuizViewController: UIViewController, UIGestureRecognizerDele
     func characterPanGesture(sender: UIPanGestureRecognizer) {
         if let characterDrawQuiz = characterDrawQuiz {
             if !characterDrawQuiz.done {
-                var point = sender.locationInView(desiredCharacterView)
+                let point = sender.locationInView(desiredCharacterView)
                 var velocity = sender.velocityInView(desiredCharacterView)
                 
                 switch sender.state {

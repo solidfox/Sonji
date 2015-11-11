@@ -22,7 +22,7 @@ extension KVGEntry {
         let characterUnicodeScalarString = NSString(format:"%x", intScalar)
         let nZeroes = 5 - characterUnicodeScalarString.length
         let prefix = "".stringByPaddingToLength(nZeroes, withString: "0", startingAtIndex: 0)
-        let KVGFilename = prefix + characterUnicodeScalarString + ".svg";
+        let KVGFilename = prefix + (characterUnicodeScalarString as String) + ".svg";
         return KVGFilename
     }
 }
@@ -81,7 +81,7 @@ class CharacterMetadataRepository: NSObject {
                     return
                 }
                 
-                var optionalWWWJDICEntry = WWWJDICEntry.entryFromRawWWWJDICResponse(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+                var optionalWWWJDICEntry = WWWJDICEntry.entryFromRawWWWJDICResponse(NSString(data: data, encoding: NSUTF8StringEncoding)! as String)
                 
                 if let WWWJDICEntry = optionalWWWJDICEntry {
                     let (optionalKVGEntry, _) = self._loadingCharacters[character]!

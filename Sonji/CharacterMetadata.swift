@@ -9,7 +9,7 @@
 import Foundation
 //import KanjiVGKit
 
-@objc class CharacterMetadata {
+class CharacterMetadata {
     
     let _kvg: KVGEntry
     let _wwwjdic: WWWJDICEntry

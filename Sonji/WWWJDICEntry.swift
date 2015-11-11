@@ -12,7 +12,7 @@ import Foundation
 let _baseURL = "http://www.csse.monash.edu.au/~jwb/cgi-bin/wwwjdic.cgi?1ZMJ"
 let _WWWJDICDownloadQueue = NSOperationQueue()
 
-@objc class WWWJDICEntry {
+class WWWJDICEntry {
     
     let character : Character
     let translations : [String]
@@ -36,18 +36,18 @@ let _WWWJDICDownloadQueue = NSOperationQueue()
         let fullRange = rawEntry.fullRange
         let nsEntry = rawEntry as NSString
         
-        (~/"\\p{Han}").enumerateMatchesInString(rawEntry, options: nil, range: fullRange){
-            (result:NSTextCheckingResult!, flags:NSMatchingFlags, _:UnsafeMutablePointer<ObjCBool>) in
+        (~/"\\p{Han}").enumerateMatchesInString(rawEntry, options: [], range: fullRange){
+            (result:NSTextCheckingResult?, flags:NSMatchingFlags, _:UnsafeMutablePointer<ObjCBool>) in
             character = rawEntry[0]
         }
         
-        (~/"\\{(.+?)\\}").enumerateMatchesInString(rawEntry, options: nil, range: fullRange) {
-            (result:NSTextCheckingResult!, flags:NSMatchingFlags, _:UnsafeMutablePointer<ObjCBool>) in
+        (~/"\\{(.+?)\\}").enumerateMatchesInString(rawEntry, options: [], range: fullRange) {
+            (result:NSTextCheckingResult?, flags:NSMatchingFlags, _:UnsafeMutablePointer<ObjCBool>) in
             translations.append(nsEntry.substringWithRange(result.rangeAtIndex(1)))
         }
         
-        (~/"\\p{Hiragana}+(\\.\\p{Hiragana}+)?").enumerateMatchesInString(rawEntry, options: nil, range: fullRange) {
-            (result:NSTextCheckingResult!, flags:NSMatchingFlags, _:UnsafeMutablePointer<ObjCBool>) in
+        (~/"\\p{Hiragana}+(\\.\\p{Hiragana}+)?").enumerateMatchesInString(rawEntry, options: [], range: fullRange) {
+            (result:NSTextCheckingResult?, flags:NSMatchingFlags, _:UnsafeMutablePointer<ObjCBool>) in
             kunReadings.append(nsEntry.substringWithRange(result.range))
         }
         
@@ -62,7 +62,7 @@ let _WWWJDICDownloadQueue = NSOperationQueue()
         // Remove enclosing html
         let openingTag = response.rangeOfString("<pre>")
         let closingTag = response.rangeOfString("</pre>")
-        var entryRange = Range(start: openingTag!.endIndex, end: closingTag!.startIndex)
+        let entryRange = Range(start: openingTag!.endIndex, end: closingTag!.startIndex)
         let rawEntry = response.substringWithRange(entryRange).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         return entryFromRawWWWJDICEntry(rawEntry)
     }
@@ -80,12 +80,18 @@ let _WWWJDICDownloadQueue = NSOperationQueue()
         var error : NSError?
         let urlString = _baseURL + "\(character)"
         let url = NSURL(string: urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
-        let response = NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding, error: &error)
+        let response: NSString?
+        do {
+            response = try NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding)
+        } catch let error1 as NSError {
+            error = error1
+            response = nil
+        }
         if (error != nil) {
-            println(error!.description)
+            print(error!.description)
         } else {
             //Parse html
-            entry = entryFromRawWWWJDICResponse(response!)
+            entry = entryFromRawWWWJDICResponse(response! as String)
         }
         
         return entry

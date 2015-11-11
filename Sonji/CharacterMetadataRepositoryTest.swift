@@ -24,7 +24,7 @@ class CharacterMetadataRepositoryTest: XCTestCase, CharacterMetadataRepositoryDe
 
     override func setUp() {
         super.setUp()
-        if !repo {
+        if (repo == nil) {
             repo = CharacterMetadataRepository(delegate:self, delegateQueue:NSOperationQueue())
         }
     }
@@ -38,7 +38,7 @@ class CharacterMetadataRepositoryTest: XCTestCase, CharacterMetadataRepositoryDe
         repo.loadCharacterMetadataFor("選")
         optionalSuccessExpectation = self.expectationWithDescription("Expecting character metadata for 選")
         self.waitForExpectationsWithTimeout(3, handler: nil)
-        if !returnedMetadata {
+        if (returnedMetadata == nil) {
             XCTFail("Didn't return metadata.")
         }
         if let metadata = returnedMetadata {

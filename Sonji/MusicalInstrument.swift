@@ -14,7 +14,7 @@ enum MusicalInstrumentKind: String {
 }
 
 class MusicalInstrument {
-    class func sharedInstance(#instrument: MusicalInstrumentKind) -> MusicalInstrument {
+    class func sharedInstance(instrument instrument: MusicalInstrumentKind) -> MusicalInstrument {
         struct SingletonPiano {
             static let instance = MusicalInstrument(kind:.Piano)
         }
@@ -63,12 +63,18 @@ class MusicalInstrument {
                     NSLog("File for note \(note) didn't exist at /Instruments/\(self.kind.rawValue)/\(note).m4a")
                     fatalError("Note file not found.")
                 }
-                var noteData = NSData(contentsOfURL: noteURL!)
+                let noteData = NSData(contentsOfURL: noteURL!)
                 assert(noteData != nil, "noteData was nil")
                 var players: [AVAudioPlayer] = []
                 for _ in 1...3 {
                     var error: NSError?
-                    let player = AVAudioPlayer(data: noteData, fileTypeHint: AVFileTypeAppleM4A, error: &error)
+                    let player: AVAudioPlayer!
+                    do {
+                        player = try AVAudioPlayer(data: noteData, fileTypeHint: AVFileTypeAppleM4A)
+                    } catch let error1 as NSError {
+                        error = error1
+                        player = nil
+                    }
                     assert(error == nil, "Error loading audio data.")
                     player.prepareToPlay()
                     player.volume = 0.7

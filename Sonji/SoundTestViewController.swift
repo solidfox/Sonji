@@ -19,7 +19,7 @@ class SoundTestViewController: UIViewController, AVSpeechSynthesizerDelegate {
     var siriSpokeNTimes = 1
     var siriSays:AVSpeechUtterance!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         siri = AVSpeechSynthesizer()
         siri!.delegate = self
@@ -45,7 +45,7 @@ class SoundTestViewController: UIViewController, AVSpeechSynthesizerDelegate {
         switch sender.state {
         case .Began:
             UIView.animateWithDuration(0.5,
-                delay: 0, options:nil, animations: {
+                delay: 0, options:[], animations: {
                     self.drawHereLabel.alpha = 0
                 }, completion: {_ in
                 })
@@ -60,7 +60,7 @@ class SoundTestViewController: UIViewController, AVSpeechSynthesizerDelegate {
             let score = userPath.compareTo(otherPath: templatePath, withInvariances: Invariant.All)
             if score > 0.7 {
                 canvas.animateSuccess()
-                let cardSet = self.parentViewController as CardSetViewController
+                let cardSet = self.parentViewController as! CardSetViewController
                 siri?.stopSpeakingAtBoundary(AVSpeechBoundary.Word)
                 siri = nil
                 cardSet.displayNext()
@@ -74,7 +74,7 @@ class SoundTestViewController: UIViewController, AVSpeechSynthesizerDelegate {
                 }
                 drawHereLabel.text = "Try again"
                 UIView.animateWithDuration(0.5,
-                    delay: 0, options:nil, animations: {
+                    delay: 0, options:[], animations: {
                         self.drawHereLabel.alpha = 1
                     }, completion: {_ in
                     })
@@ -87,7 +87,7 @@ class SoundTestViewController: UIViewController, AVSpeechSynthesizerDelegate {
         }
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
         if (synthesizer != nil) {
             if (siriSpokeNTimes < 2) {
                 synthesizer.speakUtterance(utterance)

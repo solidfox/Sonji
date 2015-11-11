@@ -57,12 +57,12 @@ class StrokeSonifier: PointSequenceReceptor {
         if __horizontalNotePositions == nil {
             var positions:[CGFloat] = []
             let type = referenceStroke.type
-            if find(_horizontalTypes, type) != nil {
+            if _horizontalTypes.indexOf(type) != nil {
                 let strokeBounds = referenceStroke.path.bounds
                 let span = strokeBounds.width * StrokeSonifierSpanScalingFactor
                 let nNotes = Double(_verticalNotes.count)
                 let noteDistance = span / CGFloat(nNotes)
-                for i in indices(_verticalNotes) {
+                for i in _verticalNotes.indices {
                     positions.append(CGFloat(i + 1) * noteDistance)
                 }
             }
@@ -75,16 +75,16 @@ class StrokeSonifier: PointSequenceReceptor {
         if __verticalNotePositions == nil {
             var positions: [CGFloat] = []
             let type = referenceStroke.type
-            if find(_verticalTypes, type) != nil {
+            if _verticalTypes.indexOf(type) != nil {
                 var notes = _verticalNotes
-                if find(_dotTypes, type) != nil {
+                if _dotTypes.indexOf(type) != nil {
                     notes = _dotNotes
                 }
                 let strokeBounds = referenceStroke.path.bounds
                 let span = strokeBounds.height * StrokeSonifierSpanScalingFactor
                 let nNotes = Double(notes.count)
                 let noteDistance = span / CGFloat(nNotes)
-                for i in indices(notes) {
+                for i in notes.indices {
                     positions.append(CGFloat(i + 1) * noteDistance)
                 }
             }
@@ -121,13 +121,13 @@ class StrokeSonifier: PointSequenceReceptor {
         dispatch_async(audioQueue) {
             let scaledPoint = CGPointApplyAffineTransform(point, self.fromCanvasTransform)
             let newOffset = scaledPoint - self.noteSpanOrigin
-            for i in indices(self._verticalNotePositions) {
+            for i in self._verticalNotePositions.indices {
                 let notePosition = self._verticalNotePositions[i]
                 if min(newOffset.y, self.currentOffset.y) <= notePosition && notePosition < max(newOffset.y, self.currentOffset.y) {
                     self._notePlayer.playNote(self._verticalNotes[i])
                 }
             }
-            for i in indices(self._horizontalNotePositions) {
+            for i in self._horizontalNotePositions.indices {
                 let notePosition = self._horizontalNotePositions[i]
                 if min(newOffset.x, self.currentOffset.x) <= notePosition && notePosition < max(newOffset.x, self.currentOffset.x) {
                     self._notePlayer.playNote(self._horizontalNotes[i])

@@ -46,7 +46,7 @@ class ModelController: NSObject, CardSetViewControllerDataSource, UIAlertViewDel
     func setReminderNotificationAtEarliestDate(earliestDate:NSDate) {
         var notificationDate:NSDate = earliestDate
         let cal:NSCalendar = NSCalendar.currentCalendar()
-        let hour = cal.components(.CalendarUnitHour, fromDate: earliestDate).hour
+        let hour = cal.components(.Hour, fromDate: earliestDate).hour
         if hour < 11 {
             notificationDate = earliestDate.dateByAddingTimeInterval(NSTimeInterval(60*60*(11-hour)))
         } else if hour > 21 {
@@ -63,13 +63,13 @@ class ModelController: NSObject, CardSetViewControllerDataSource, UIAlertViewDel
     }
     
     func _instantiateDrawQuizViewController() -> CharacterDrawQuizViewController {
-        let nextViewController = _storyboard.instantiateViewControllerWithIdentifier("CharacterDrawQuizViewController") as CharacterDrawQuizViewController
+        let nextViewController = _storyboard.instantiateViewControllerWithIdentifier("CharacterDrawQuizViewController") as! CharacterDrawQuizViewController
         var dummy = nextViewController.view
         return nextViewController
     }
     
     func _instantiatePleaseWaitViewController() -> PleaseWaitViewController {
-        let pleaseWaitController = _storyboard.instantiateViewControllerWithIdentifier("PleaseWaitViewController") as PleaseWaitViewController
+        let pleaseWaitController = _storyboard.instantiateViewControllerWithIdentifier("PleaseWaitViewController") as! PleaseWaitViewController
         var dummy = pleaseWaitController.view
         return pleaseWaitController
     }
@@ -161,7 +161,7 @@ class ModelController: NSObject, CardSetViewControllerDataSource, UIAlertViewDel
                 }
             }
         } else {
-            nextViewController = next(previous: viewController)
+            nextViewController = next(viewController)
         }
         return nextViewController
     }
@@ -171,7 +171,7 @@ class ModelController: NSObject, CardSetViewControllerDataSource, UIAlertViewDel
     
     func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int) {
         if alertView.numberOfButtons > 1 {
-            var comment = alertView.buttonTitleAtIndex(buttonIndex)
+            let comment = alertView.buttonTitleAtIndex(buttonIndex)
             UserData.sharedInstance.sendComment(comment)
         }
         if alertView == _thankYouAlert {

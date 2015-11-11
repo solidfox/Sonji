@@ -11,7 +11,10 @@ import CoreData
 
 extension DrawQuizResult {
     
-    class func add(character:Character, score:Float, iteration:Int, managedObjectContext context:NSManagedObjectContext) {
+    class func add(        character:Character,
+                               score:Float,
+                           iteration:Int,
+        managedObjectContext context:NSManagedObjectContext) {
         let entity = NSEntityDescription.entityForName("DrawQuizResult", inManagedObjectContext: context)
         let newResult: DrawQuizResult = DrawQuizResult(entity: entity!, insertIntoManagedObjectContext: context)
         newResult.score = score
@@ -19,7 +22,11 @@ extension DrawQuizResult {
         newResult.date = NSDate()
         newResult.iteration = NSNumber(int: Int32(iteration)) 
         var error: NSError?
-        context.save(&error)
+        do {
+            try context.save()
+        } catch let error1 as NSError {
+            error = error1
+        }
         if error != nil {
             NSLog("\(error)")
             assert(false, "Saving userDataManagedObject should succeed.")
@@ -27,19 +34,23 @@ extension DrawQuizResult {
     }
     
     class func lastNResults(n: Int, ForCharacter character:Character, managedObjectContext context:NSManagedObjectContext) -> [DrawQuizResult] {
+        assert(n >= 0)
         let request = NSFetchRequest(entityName: "DrawQuizResult")
         request.predicate = NSPredicate(format: "character = %@", String(character))
         request.fetchLimit = n
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-        var error:NSError?
-        let results = context.executeFetchRequest(request, error:&error) as [DrawQuizResult]
-        if error != nil {
+        do {
+            let results = try context.executeFetchRequest(request) as? [DrawQuizResult]
+            if results == nil {
+                NSLog("\(results)")
+                NSLog("\(request.predicate)")
+                return [DrawQuizResult]()
+            }
+            return results!
+        } catch let error as NSError {
             NSLog("Failed to get last result for character: \(character)")
-            NSLog("\(results)")
             NSLog("\(error)")
-            NSLog("\(request.predicate)")
         }
-        return results
     }
     
 }

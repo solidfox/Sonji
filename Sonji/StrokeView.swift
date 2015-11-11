@@ -59,7 +59,7 @@ class StrokeView: UIView {
         self.opaque = false
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -126,8 +126,8 @@ class StrokeView: UIView {
             __transformedPath = UIBezierPath(CGPath: stroke.path.CGPath)
             __transformedPath!.applyTransform(transformToView)
             __transformedPath!.lineWidth = lineWidth
-            __transformedPath!.lineCapStyle = kCGLineCapRound
-            __transformedPath!.lineJoinStyle = kCGLineJoinRound
+            __transformedPath!.lineCapStyle = CGLineCap.Round
+            __transformedPath!.lineJoinStyle = CGLineJoin.Round
         }
         return __transformedPath!
     }

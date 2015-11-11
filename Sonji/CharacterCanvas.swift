@@ -22,7 +22,7 @@ class CharacterCanvas: PointSequenceView {
         self.interpolatePoints = true
     }
     
-    override init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self._defaultSettings()
     }
