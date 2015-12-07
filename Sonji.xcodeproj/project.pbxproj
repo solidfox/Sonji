@@ -243,7 +243,6 @@
 				96C4F36619714EAA008F4659 /* DrawQuizResult-Creation.swift */,
 				96D7BB6919630B2F00A38703 /* CharacterDrawQuiz.swift */,
 				96C6FDEA197408B800C9B732 /* UserStroke.swift */,
-				968E3B24196F26CB00403261 /* UserData.swift */,
 				9619E63619654C2A00DE98F5 /* CharacterQuizHistory.swift */,
 				96D7BB6A19630B2F00A38703 /* CharacterTester.swift */,
 				96D7BB8019630C9300A38703 /* CharacterMetadata.swift */,
@@ -302,6 +301,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		96818C6F1BF36D3A00D97700 /* Study */ = {
+			isa = PBXGroup;
+			children = (
+				968E3B24196F26CB00403261 /* UserData.swift */,
+			);
+			name = Study;
+			sourceTree = "<group>";
+		};
 		96ED56191960B26B00E5A16A = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +334,7 @@
 		96ED56241960B26B00E5A16A /* Sonji */ = {
 			isa = PBXGroup;
 			children = (
+				96818C6F1BF36D3A00D97700 /* Study */,
 				9619E6401966D3A900DE98F5 /* PointSequenceReceptor.swift */,
 				9619E6351965464300DE98F5 /* Model */,
 				9619E62C196545F700DE98F5 /* View */,
@@ -414,6 +422,8 @@
 		96ED561A1960B26B00E5A16A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Daniel Schlaug";
 				TargetAttributes = {

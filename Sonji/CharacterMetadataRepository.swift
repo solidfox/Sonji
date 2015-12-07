@@ -55,40 +55,51 @@ class CharacterMetadataRepository: NSObject {
             let wwwjdicURL = NSURL(string:"http://www.csse.monash.edu.au/~jwb/cgi-bin/wwwjdic.cgi?1ZMJ\(urlEscapedCharacter)")!
 
             let kanjiVGDownloadTask = _URLSession.dataTaskWithURL(kanjiVGURL!) {
-                (data, response, error) in
+                (optionalData, response, error) in
                 
                 if (error != nil) {
                     self._failLoadingMetadataForCharacter(character, withError: error)
                     return
                 }
                 
-                var optionalKVGEntry = KVGEntry.entryFromData(data)
-                
-                if let kvgEntry = optionalKVGEntry {
-                    let (_, optionalWWWJDICEntry) = self._loadingCharacters[character]!
-                    self._loadingCharacters[character] = (optionalKVGEntry, optionalWWWJDICEntry)
-                    self._maybeFinishedLoadingMetadataForCharacter(character)
+                if optionalData == nil {
+                    self._failLoadingMetadataForCharacter(character, withError: error)
                 } else {
-                    self._failLoadingMetadataForCharacter(character, withError: nil) //TODO Sensible error
+                    let data = optionalData!
+                    let optionalKVGEntry = KVGEntry.entryFromData(data)
+                    
+                    if let kvgEntry = optionalKVGEntry {
+                        let (_, optionalWWWJDICEntry) = self._loadingCharacters[character]!
+                        self._loadingCharacters[character] = (optionalKVGEntry, optionalWWWJDICEntry)
+                        self._maybeFinishedLoadingMetadataForCharacter(character)
+                    } else {
+                        self._failLoadingMetadataForCharacter(character, withError: nil) //TODO Sensible error
+                    }
                 }
                 
             }
             let wwwjdicDownloadTask = _URLSession.dataTaskWithURL(wwwjdicURL) {
-                (data, response, error) in
+                (optionalData, response, error) in
                 
                 if (error != nil) {
                     self._failLoadingMetadataForCharacter(character, withError: error)
                     return
                 }
-                
-                var optionalWWWJDICEntry = WWWJDICEntry.entryFromRawWWWJDICResponse(NSString(data: data, encoding: NSUTF8StringEncoding)! as String)
-                
-                if let WWWJDICEntry = optionalWWWJDICEntry {
-                    let (optionalKVGEntry, _) = self._loadingCharacters[character]!
-                    self._loadingCharacters[character] = (optionalKVGEntry, WWWJDICEntry)
-                    self._maybeFinishedLoadingMetadataForCharacter(character)
+                if optionalData == nil {
+                    self._failLoadingMetadataForCharacter(character, withError: error)
                 } else {
-                    self._failLoadingMetadataForCharacter(character, withError: nil) //TODO Sensible error
+                    let data = optionalData!
+
+                
+                    let optionalWWWJDICEntry = WWWJDICEntry.entryFromRawWWWJDICResponse(NSString(data: data, encoding: NSUTF8StringEncoding)! as String)
+                    
+                    if let WWWJDICEntry = optionalWWWJDICEntry {
+                        let (optionalKVGEntry, _) = self._loadingCharacters[character]!
+                        self._loadingCharacters[character] = (optionalKVGEntry, WWWJDICEntry)
+                        self._maybeFinishedLoadingMetadataForCharacter(character)
+                    } else {
+                        self._failLoadingMetadataForCharacter(character, withError: nil) //TODO Sensible error
+                    }
                 }
             }
             

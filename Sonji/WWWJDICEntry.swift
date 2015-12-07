@@ -43,7 +43,7 @@ class WWWJDICEntry {
         
         (~/"\\{(.+?)\\}").enumerateMatchesInString(rawEntry, options: [], range: fullRange) {
             (result:NSTextCheckingResult?, flags:NSMatchingFlags, _:UnsafeMutablePointer<ObjCBool>) in
-            translations.append(nsEntry.substringWithRange(result.rangeAtIndex(1)))
+            translations.append(nsEntry.substringWithRange(result!.rangeAtIndex(1)))
         }
         
         (~/"\\p{Hiragana}+(\\.\\p{Hiragana}+)?").enumerateMatchesInString(rawEntry, options: [], range: fullRange) {
@@ -79,7 +79,7 @@ class WWWJDICEntry {
         // Fetch database entry from internet
         var error : NSError?
         let urlString = _baseURL + "\(character)"
-        let url = NSURL(string: urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
+        let url = NSURL(string: urlString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
         let response: NSString?
         do {
             response = try NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding)

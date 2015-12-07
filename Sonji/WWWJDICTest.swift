@@ -35,7 +35,7 @@ class WWWJDICTest: XCTestCase {
     }
     
     func testAsynchroneousCreation() {
-        var expectEntry = self.expectationWithDescription("async kanji download")
+        let expectEntry = self.expectationWithDescription("async kanji download")
         
         WWWJDICEntry.asyncDownloadEntryForCharacter("選", withCallback:{(optionalEntry: WWWJDICEntry?) in
             if (optionalEntry == nil) {

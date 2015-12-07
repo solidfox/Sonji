@@ -26,7 +26,6 @@ class UserData {
     var _managedDocument: UIManagedDocument?
     func loadManagedObjectContext(completion:(NSManagedObjectContext?) -> ()) {
         if _managedDocument != nil {
-            let semaphore = dispatch_semaphore_create(0)
             let fileManager = NSFileManager.defaultManager()
             let documentDirectory = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
             let documentName = "UserData"

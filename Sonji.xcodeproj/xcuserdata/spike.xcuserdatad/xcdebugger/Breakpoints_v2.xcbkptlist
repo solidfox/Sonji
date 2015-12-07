@@ -25,22 +25,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Sonji/CharacterMetadataRepository.swift"
-            timestampString = "426170320.75014"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "loadCharacterMetadataFor(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Sonji/ModelController.swift"
             timestampString = "427028245.159152"
             startingColumnNumber = "9223372036854775807"
@@ -127,102 +111,6 @@
                   startingLineNumber = "33"
                   endingLineNumber = "33"
                   offsetFromSymbolStart = "1683">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sonji/CharacterMetadataRepository.swift"
-            timestampString = "426172593.124352"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "loadCharacterMetadataFor(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sonji.CharacterMetadataRepository.(loadCharacterMetadataFor (Sonji.CharacterMetadataRepository) -&gt; (Swift.Character) -&gt; ()).(closure #1)"
-                  moduleName = "Sonji"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/spike/Dropbox/Developer/iOS/Sonji/Sonji/CharacterMetadataRepository.swift"
-                  timestampString = "426172612.00787"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "1296">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sonji.CharacterMetadataRepository.(loadCharacterMetadataFor (Sonji.CharacterMetadataRepository) -&gt; (Swift.Character) -&gt; ()).(closure #1)"
-                  moduleName = "Sonji"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/spike/Dropbox/Developer/iOS/Sonji/Sonji/CharacterMetadataRepository.swift"
-                  timestampString = "426172612.008051"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "1312">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sonji/CharacterMetadataRepository.swift"
-            timestampString = "426172594.811874"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "loadCharacterMetadataFor(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sonji.CharacterMetadataRepository.(loadCharacterMetadataFor (Sonji.CharacterMetadataRepository) -&gt; (Swift.Character) -&gt; ()).(closure #1)"
-                  moduleName = "Sonji"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/spike/Dropbox/Developer/iOS/Sonji/Sonji/CharacterMetadataRepository.swift"
-                  timestampString = "426172612.046278"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "584">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Sonji.CharacterMetadataRepository.(loadCharacterMetadataFor (Sonji.CharacterMetadataRepository) -&gt; (Swift.Character) -&gt; ()).(closure #1)"
-                  moduleName = "Sonji"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/spike/Dropbox/Developer/iOS/Sonji/Sonji/CharacterMetadataRepository.swift"
-                  timestampString = "426172612.046669"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "628">
                </Location>
             </Locations>
          </BreakpointContent>
