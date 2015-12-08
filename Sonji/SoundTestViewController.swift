@@ -88,11 +88,9 @@ class SoundTestViewController: UIViewController, AVSpeechSynthesizerDelegate {
     }
     
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
-        if (synthesizer != nil) {
-            if (siriSpokeNTimes < 2) {
-                synthesizer.speakUtterance(utterance)
-                ++siriSpokeNTimes
-            }
+        if (siriSpokeNTimes < 2) {
+            synthesizer.speakUtterance(utterance)
+            ++siriSpokeNTimes
         }
     }
 }

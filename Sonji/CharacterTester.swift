@@ -17,7 +17,7 @@ class CharacterTester: CharacterMetadataRepositoryDelegate, CharacterDrawQuizDel
     var _completionHandlers: [(Character, (CharacterDrawQuiz) -> Void)] = []
     var _userDataOperations: [(() -> ())] = []
     var _metadataForCharacter: Dictionary<Character, CharacterMetadata> = [:]
-    let _metadataRepo: CharacterMetadataRepository! = nil
+    var _metadataRepo: CharacterMetadataRepository! = nil
     var _userDataContext: NSManagedObjectContext!
     var _userDataContextSemaphore = dispatch_semaphore_create(0)
     

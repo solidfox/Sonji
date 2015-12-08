@@ -29,10 +29,10 @@ class MnemonicSoundPlayer {
                 self.loop = true
             }
             if soundURL != nil {
-                let player = try? AVAudioPlayer(contentsOfURL: soundURL, fileTypeHint: AVFileTypeAppleM4A)
-                player.prepareToPlay()
-                player.volume = 0.3
-                player.play()
+                let player = try? AVAudioPlayer(contentsOfURL: soundURL!, fileTypeHint: AVFileTypeAppleM4A)
+                player!.prepareToPlay()
+                player!.volume = 0.3
+                player!.play()
                 self.player = player
             } else {
                 NSLog("Could not find [\(word)]\(self._noLoopMarker).m4a")

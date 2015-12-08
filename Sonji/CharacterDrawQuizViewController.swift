@@ -57,8 +57,8 @@ class CharacterDrawQuizViewController: UIViewController, UIGestureRecognizerDele
         if characterDrawQuiz != nil {
             NSLog("old \(characterDrawQuiz?.character)")
             NSLog("new \(newValue?.character)")
-            let debugOldV = characterDrawQuiz
-            let debugNewV = newValue
+//            let debugOldV = characterDrawQuiz
+//            let debugNewV = newValue
             assert(false, "characterDrawQuiz should only be set once.")
         }
     }
@@ -136,7 +136,7 @@ class CharacterDrawQuizViewController: UIViewController, UIGestureRecognizerDele
     
     func introduceCharacter(callback: () -> ()) {
         assert(characterDrawQuiz != nil, "introduceCharacter should not be called when no characterDrawQuiz is present")
-        if let characterDrawQuiz = self.characterDrawQuiz {
+        if self.characterDrawQuiz != nil {
             desiredCharacterView.animateDrawingCharacter() {
                 callback()
             }
@@ -254,7 +254,7 @@ class CharacterDrawQuizViewController: UIViewController, UIGestureRecognizerDele
         if let characterDrawQuiz = characterDrawQuiz {
             if !characterDrawQuiz.done {
                 let point = sender.locationInView(desiredCharacterView)
-                var velocity = sender.velocityInView(desiredCharacterView)
+                //var velocity = sender.velocityInView(desiredCharacterView)
                 
                 switch sender.state {
                 case .Began:
@@ -295,14 +295,14 @@ class CharacterDrawQuizViewController: UIViewController, UIGestureRecognizerDele
         super.viewWillAppear(animated)
     }
     
-    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int) {
-        if alertView == welcome? {
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if alertView == welcome {
             introduceCharacter() {
                 self.yourTurn = UIAlertView(title: "Your turn", message: "Help is just a tap away. Try to keep up until the end (there is one)! Good luck.", delegate: self, cancelButtonTitle: nil, otherButtonTitles: "Ok")
                 self.yourTurn!.show()
             }
         }
-        if alertView == yourTurn? {
+        if alertView == yourTurn {
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: userHasBeenBriefedKey)
             beginQuiz()
         }

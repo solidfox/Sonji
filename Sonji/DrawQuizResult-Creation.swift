@@ -51,6 +51,7 @@ extension DrawQuizResult {
             NSLog("Failed to get last result for character: \(character)")
             NSLog("\(error)")
         }
+        assert(false)
     }
     
 }

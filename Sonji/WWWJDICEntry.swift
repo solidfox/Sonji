@@ -48,7 +48,9 @@ class WWWJDICEntry {
         
         (~/"\\p{Hiragana}+(\\.\\p{Hiragana}+)?").enumerateMatchesInString(rawEntry, options: [], range: fullRange) {
             (result:NSTextCheckingResult?, flags:NSMatchingFlags, _:UnsafeMutablePointer<ObjCBool>) in
-            kunReadings.append(nsEntry.substringWithRange(result.range))
+            if let result = result {
+                kunReadings.append(nsEntry.substringWithRange(result.range))
+            }
         }
         
         if character != nil {

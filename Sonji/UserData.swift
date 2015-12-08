@@ -132,7 +132,7 @@ class UserData {
             /*iterationField*/ "entry.1521849499=\(iteration)",
             /*sessionField*/ "entry.1688688554=\(nSessions)"
         ]
-        var postString = fields.implode("&")!
+        var postString = fields.joinWithSeparator("&")
         postString = (postString as NSString).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         let data = (postString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
         request.HTTPBody = data
@@ -142,7 +142,7 @@ class UserData {
     
     var deviceID:String {
         #if DEBUG
-            return "DEBUG" + UIDevice.currentDevice().identifierForVendor.UUIDString
+            return "DEBUG" + UIDevice.currentDevice().identifierForVendor!.UUIDString
         #else
             return UIDevice.currentDevice().identifierForVendor.UUIDString
         #endif
@@ -170,7 +170,7 @@ class UserData {
             /*startEndField*/ "entry.266771474=\(stroke.refStroke.path.firstPoint) - \(stroke.refStroke.path.currentPoint)",
             /*sessionsField*/ "entry.922383067=\(nSessions)"
         ]
-        var postString = fields.implode("&")!
+        var postString = fields.joinWithSeparator("&")
         postString = (postString as NSString).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         let data = (postString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
         request.HTTPBody = data
@@ -188,7 +188,7 @@ class UserData {
         
         let idField = "entry.1844307797=\(deviceID)"
         let commentField = "entry.1746965540=\(comment)"
-        var postString = [idField, commentField].implode("&")!
+        var postString = [idField, commentField].joinWithSeparator("&")
         postString = (postString as NSString).stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         let data = (postString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
         request.HTTPBody = data

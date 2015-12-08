@@ -70,7 +70,7 @@ class MusicalInstrument {
                     var error: NSError?
                     let player: AVAudioPlayer!
                     do {
-                        player = try AVAudioPlayer(data: noteData, fileTypeHint: AVFileTypeAppleM4A)
+                        player = try AVAudioPlayer(data: noteData!, fileTypeHint: AVFileTypeAppleM4A)
                     } catch let error1 as NSError {
                         error = error1
                         player = nil
