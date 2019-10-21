@@ -199,11 +199,11 @@ class CharacterTester: CharacterMetadataRepositoryDelegate, CharacterDrawQuizDel
         if index == 0 {
             return
         } else if index > 0 {
-            for i in 1...index {
+            for _ in 1...index {
                 loadNextQuiz() {quiz in }
             }
         } else {
-            for i in -1...index {
+            for _ in -1...index {
                 previousQuiz()
             }
         }

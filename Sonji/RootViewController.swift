@@ -29,7 +29,6 @@ class RootViewController: UIViewController, UIGestureRecognizerDelegate {
         self.cardSetViewController.dataSource = modelController
         
         let startingViewController: UIViewController = self.storyboard!.instantiateViewControllerWithIdentifier("SoundTestViewController") as UIViewController
-        let dummy = startingViewController.view
         self.cardSetViewController.currentViewController = startingViewController
 
         self.addChildViewController(self.cardSetViewController)
@@ -99,7 +98,7 @@ class RootViewController: UIViewController, UIGestureRecognizerDelegate {
 
     
     //MARK Delegate methods
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
 }
